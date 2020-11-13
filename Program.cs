@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EnthusiasticMoose
 {
@@ -11,14 +12,17 @@ namespace EnthusiasticMoose
             Console.WriteLine();
 
             // Let the moose speak!
-            MooseSays("H I, I'M  E N T H U S I A S T I C !");
-            MooseSays("I really am enthusiastic");
+            //MooseSays("H I, I'M  E N T H U S I A S T I C !");
+            //MooseSays("I really am enthusiastic");
+            MooseSays("Ask me a question!");
+
+            UserAsks();
 
             // Ask some questions
-            CanadaQuestion();
-            EnthusiasticQuestion();
-            LoveCSharpQuestion();
-            SecretQuestion();
+            //CanadaQuestion();
+            //EnthusiasticQuestion();
+            //LoveCSharpQuestion();
+            //SecretQuestion();
         }
 
         static void CanadaQuestion()
@@ -124,6 +128,52 @@ namespace EnthusiasticMoose
             {
                 return false;
             }
+        }
+
+        static void UserAsks()
+        {
+            string x = Console.ReadLine();
+
+            if (x.Length > 0)
+            {
+                string y = randomAnswer();
+                MooseSays(y);
+                UserAsks();
+            }
+            else
+            {
+
+            }
+        }
+
+        static string randomAnswer()
+        {
+            var answers = new List<string>()
+            {
+                "As I see it, yes.",
+                "Ask again later.",
+                "Better not tell you now.",
+                "Cannot predict now.",
+                "Concentrate and ask again.",
+                "Don’t count on it.",
+                "It is certain.",
+                "It is decidedly so.",
+                "Most likely.",
+                "My reply is no.",
+                "My sources say no.",
+                "Outlook not so good.",
+                "Outlook good.",
+                "Reply hazy, try again.",
+                "Signs point to yes.",
+                "Very doubtful.",
+                "Without a doubt.",
+                "Yes.",
+                "Yes – definitely.",
+                "You may rely on it."
+            };
+            Random r = new Random();
+            int genRandom = r.Next(0, 19);
+            return answers[genRandom];
         }
     }
 }
